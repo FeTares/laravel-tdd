@@ -16,6 +16,7 @@ class UserApiTest extends TestCase
     {
         $response = $this->getJson($this->endpoint);
         $response->assertStatus(Response::HTTP_OK);
+        $response->assertJsonCount(0, 'data');
     }
 
     public function test_get_all()
