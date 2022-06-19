@@ -18,8 +18,8 @@ class UserController extends Controller
 
     public function index()
     {
-        $users = $this->repository->paginate();
-
-        return UserResource::collection($users);
+        $response = $this->repository->paginate();
+        // dd($response);
+        return UserResource::collection(collect($response->items()));
     }
 }

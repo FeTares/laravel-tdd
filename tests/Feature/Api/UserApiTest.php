@@ -10,7 +10,7 @@ use Tests\TestCase;
 
 class UserApiTest extends TestCase
 {
-    protected $endpoint = '/api/users';
+    protected string $endpoint = '/api/users';
 
     public function test_paginete_empty()
     {
