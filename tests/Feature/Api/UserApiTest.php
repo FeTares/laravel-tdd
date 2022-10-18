@@ -57,4 +57,23 @@ class UserApiTest extends TestCase
             [ 'total' => 40, 'page' => 3, 'totalPage' => 10 ]
         ];
     }
+
+    public function test_create()
+    {
+        $payload = [
+            'name' => 'Felipe',
+            'email' => 'felipe@gg.com',
+            'password' => '12345678',
+        ];
+
+        $response = $this->postJson($this->endpoint, $payload);
+        $response->assertStatus(Response::HTTP_CREATED);
+        $response->assertJsonStructure([
+            'data' => [
+                'id',
+                'name',
+                'email'
+            ]
+        ]);
+    }
 }
