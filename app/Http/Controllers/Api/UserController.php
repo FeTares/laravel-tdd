@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use App\Http\Resources\UserResource;
 use App\Repository\Contracts\UserRepositoryInterface;
 use Illuminate\Http\Request;
@@ -47,9 +48,9 @@ class UserController extends Controller
         return new UserResource($user);
     }
 
-    public function update($email, Request $request)
+    public function update($email, UserUpdateRequest $request)
     {
-        $user = $this->repository->update($email, $request->all());
+        $user = $this->repository->update($email, $request->validated());
 
         return new UserResource($user);
     }
