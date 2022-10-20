@@ -46,4 +46,11 @@ class UserController extends Controller
 
         return new UserResource($user);
     }
+
+    public function update($email, Request $request)
+    {
+        $user = $this->repository->update($email, $request->all());
+
+        return new UserResource($user);
+    }
 }
